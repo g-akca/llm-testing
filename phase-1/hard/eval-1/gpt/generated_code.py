@@ -3,66 +3,43 @@ from typing import List
 
 def separate_paren_groups(paren_string: str) -> List[str]:
     """
-    Split a string that contains several *disjoint*-but-possibly-nested groups
-    of parentheses into a list of the individual, balanced groups.
+    Input to this function is a string containing multiple groups of nested parentheses.
+    Your goal is to separate those groups into separate strings and return the list of those.
+    Separate groups are balanced (each open brace is properly closed) and not nested within each other.
+    Ignore any spaces in the input string.
 
-    - Groups are **not** nested inside each other; once a group starts,
-      it runs to completion before the next one begins.
-    - Any space characters should be ignored.
-
-    Examples
-    --------
     >>> separate_paren_groups('( ) (( )) (( )( ))')
-    ['()', '(())', '(()()))']
-
-    >>> separate_paren_groups('(()()) ()')
-    ['(()())', '()']
-
-    Parameters
-    ----------
-    paren_string : str
-        A string consisting only of `'('`, `')'`, and (optional) spaces.
-
-    Returns
-    -------
-    List[str]
-        Each element is one balanced, complete parenthesis group.
+    ['()', '(())', '(()())']
     """
-    groups: List[str] = []           # Final list of completed groups
-    current: List[str] = []          # Characters for the group in progress
-    depth: int = 0                   # Current parenthesis nesting depth
+    # Remove all whitespace characters
+    cleaned = paren_string.replace(" ", "")
 
-    for ch in paren_string:
-        if ch == ' ':                # Skip spaces entirely
+    groups: List[str] = []
+    current: List[str] = []
+    depth = 0
+
+    for ch in cleaned:
+        if ch not in "()":
+            # Ignore anything that is not a parenthesis
             continue
 
-        if ch not in '()':
-            raise ValueError(f"Invalid character {ch!r} in input; "
-                             "only spaces and parentheses are allowed")
-
-        # Always append the parenthesis character we just saw
         current.append(ch)
 
         # Update nesting depth
-        depth += 1 if ch == '(' else -1
+        if ch == "(":
+            depth += 1
+        else:  # ch == ")"
+            depth -= 1
 
-        # When depth returns to zero, we just closed a complete group
+        # When depth returns to zero, we’ve closed a complete group
         if depth == 0:
-            groups.append(''.join(current))
-            current.clear()          # Start fresh for the next group
-
-        # `depth` should never be negative for a well-formed input
-        if depth < 0:
-            raise ValueError("Unbalanced parentheses: too many ')' characters")
-
-    if depth != 0:
-        raise ValueError("Unbalanced parentheses: unfinished '(' group")
+            groups.append("".join(current))
+            current = []  # start next group
 
     return groups
 
 
-# --- Minimal self-test / demo ---------------------------------------------
 if __name__ == "__main__":
+    # Simple sanity check
     sample = "( ) (( )) (( )( ))"
-    print("Input :", sample)
-    print("Output:", separate_paren_groups(sample))
+    print(separate_paren_groups(sample))  # ['()', '(())', '(()())']

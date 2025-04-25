@@ -1,26 +1,27 @@
 import unittest
-from generated_code import intersection
+
+# Assume the `intersection` function is defined in the same module.
+# If it lives in a different file (e.g. my_module.py), replace the next line with:
+
+from code import intersection
 
 class TestIntersection(unittest.TestCase):
-    def test_point_intersection_non_prime(self):
-        """Intersection length is 0 → not prime."""
-        self.assertEqual(intersection((1, 2), (2, 3)), "NO")
 
-    def test_non_overlapping_intervals(self):
-        """Completely disjoint intervals should return NO."""
-        self.assertEqual(intersection((1, 1), (2, 2)), "NO")
-
-    def test_prime_length_two(self):
-        """Intersection length 2 → prime."""
+    def test_prime_length(self):
+        # Intersection length is 2 (prime) → "YES"
         self.assertEqual(intersection((-3, -1), (-5, 5)), "YES")
 
-    def test_prime_length_three(self):
-        """Intersection length 3 → prime."""
-        self.assertEqual(intersection((0, 5), (2, 6)), "YES")
-
-    def test_non_prime_length_one(self):
-        """Intersection length 1 → not prime."""
+    def test_non_prime_length(self):
+        # Intersection length is 1 (not prime) → "NO"
         self.assertEqual(intersection((1, 3), (2, 4)), "NO")
+
+    def test_no_intersection(self):
+        # Disjoint intervals → "NO"
+        self.assertEqual(intersection((1, 2), (3, 4)), "NO")
+
+    def test_single_point_intersection(self):
+        # Touching at a single point → length 0 → "NO"
+        self.assertEqual(intersection((0, 1), (1, 2)), "NO")
 
 
 if __name__ == "__main__":

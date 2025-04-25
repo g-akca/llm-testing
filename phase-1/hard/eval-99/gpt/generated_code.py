@@ -1,5 +1,5 @@
-from decimal import Decimal, InvalidOperation
 import math
+from decimal import Decimal, InvalidOperation, ROUND_FLOOR, ROUND_CEILING
 
 def closest_integer(value):
     '''
@@ -19,21 +19,27 @@ def closest_integer(value):
     farthest from zero. For example closest_integer("14.5") should
     return 15 and closest_integer("-14.5") should return -15.
     '''
+    # --- Parse the input safely using Decimal for accuracy ---
     try:
         num = Decimal(value)
     except (InvalidOperation, TypeError):
-        raise ValueError("Input must be a valid numeric string")
+        raise ValueError("Input must be a string representation of a numeric value")
 
-    if num >= 0:
-        # Add 0.5 and take floor – equidistant values go up (away from 0)
-        return int(math.floor(num + Decimal("0.5")))
-    else:
-        # Subtract 0.5 and take ceil – equidistant values go down (away from 0)
-        return int(math.ceil(num - Decimal("0.5")))
+    # If already an integer, return it quickly
+    if num == int(num):
+        return int(num)
 
+    # Determine sign once (0 treated as positive for rounding logic)
+    sign = 1 if num >= 0 else -1
 
-if __name__ == "__main__":
-    # Simple manual tests
-    tests = ["10", "15.3", "14.5", "-14.5", "-14.2", "0", "0.5", "-0.5"]
-    for t in tests:
-        print(f"{t} -> {closest_integer(t)}")
+    # Absolute distance to the nearest lower integer
+    fractional_part = abs(num - int(num))
+
+    # Exactly halfway (.5) → need to move away from zero
+    if fractional_part == Decimal("0.5"):
+        return int(num.to_integral_exact(rounding=ROUND_CEILING if sign == 1 else ROUND_FLOOR))
+
+    # Otherwise, use normal rounding to the nearest integer
+    # Decimal's quantize makes behavior explicit and consistent
+    nearest = num.to_integral_value(rounding=ROUND_FLOOR if fractional_part < Decimal("0.5") else ROUND_CEILING)
+    return int(nearest)

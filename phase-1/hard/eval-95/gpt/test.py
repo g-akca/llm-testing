@@ -1,27 +1,45 @@
 import unittest
 
-from generated_code import check_dict_case  # replace `your_module` with the actual filename
+# Assume `check_dict_case` is defined in the same file or imported from the module
+# where you placed the function implementation.
+from typing import Callable
+
 
 class TestCheckDictCase(unittest.TestCase):
+    def setUp(self):
+        # If check_dict_case is in another module, replace with the proper import.
+        from __main__ import check_dict_case  # noqa: E402
+        self.func: Callable = check_dict_case
 
-    def test_all_lower_keys(self):
-        data = {"a": 1, "b": 2, "c": 3}
-        self.assertTrue(check_dict_case(data))
+    # --- Positive cases ------------------------------------------------------
+    def test_all_lowercase_keys(self):
+        self.assertTrue(
+            self.func({"a": "apple", "b": "banana", "c": "cherry"}),
+            "Should return True when every key is lower-case.",
+        )
 
-    def test_all_upper_keys(self):
-        data = {"FOO": "bar", "BAR": "baz"}
-        self.assertTrue(check_dict_case(data))
+    def test_all_uppercase_keys(self):
+        self.assertTrue(
+            self.func({"ZIP": "27514", "STATE": "NC"}),
+            "Should return True when every key is upper-case.",
+        )
 
-    def test_mixed_case_keys(self):
-        data = {"a": 1, "B": 2}
-        self.assertFalse(check_dict_case(data))
+    # --- Negative cases ------------------------------------------------------
+    def test_empty_dict_returns_false(self):
+        self.assertFalse(self.func({}), "Empty dictionary must return False.")
 
-    def test_non_string_key(self):
-        data = {"a": 1, 2: "b"}
-        self.assertFalse(check_dict_case(data))
+    def test_mixed_case_keys_returns_false(self):
+        self.assertFalse(
+            self.func({"a": "apple", "B": "banana"}),
+            "Mixed lower- and upper-case keys must return False.",
+        )
 
-    def test_empty_dict(self):
-        self.assertFalse(check_dict_case({}))
+    def test_non_string_key_returns_false(self):
+        self.assertFalse(
+            self.func({"a": 1, 3: "three"}),
+            "Presence of non-string keys must return False.",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

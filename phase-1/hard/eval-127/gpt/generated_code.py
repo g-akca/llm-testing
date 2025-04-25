@@ -1,46 +1,43 @@
-import math
-from typing import Tuple
-
 def _is_prime(n: int) -> bool:
-    """Return True if `n` is a prime number, else False."""
+    """Return True if *n* is a prime number (> 1)."""
     if n <= 1:
         return False
-    if n == 2:
+    if n in (2, 3):
         return True
-    if n % 2 == 0:
+    if n % 2 == 0 or n % 3 == 0:
         return False
-    limit = int(math.sqrt(n)) + 1
-    for i in range(3, limit, 2):
+    i = 5
+    step = 2  # alternates 2, 4 to test 6k±1 numbers
+    while i * i <= n:
         if n % i == 0:
             return False
+        i += step
+        step = 6 - step  # switch between +2 and +4
     return True
 
 
-def intersection(interval1: Tuple[int, int], interval2: Tuple[int, int]) -> str:
+def intersection(interval1, interval2):
     """
-    Determine whether the length of the intersection of two closed intervals
-    is a prime number.
+    Determine whether the (non-negative) length of the intersection of two closed
+    integer intervals is a prime number.
 
-    Parameters
-    ----------
-    interval1 : Tuple[int, int]
-        First closed interval (start, end), start <= end.
-    interval2 : Tuple[int, int]
-        Second closed interval (start, end), start <= end.
+    Each interval is a 2-tuple (start, end) with start ≤ end.  
+    The length is defined as end − start for the intersecting part.
 
     Returns
     -------
-    str
-        "YES" if the length of the intersection is a prime number,
-        otherwise "NO". If the intervals do not intersect, returns "NO".
+    "YES" if the length is prime, otherwise "NO".
     """
-    start = max(interval1[0], interval2[0])
-    end = min(interval1[1], interval2[1])
+    a1, b1 = interval1
+    a2, b2 = interval2
 
-    # No intersection if the calculated start is greater than end
-    if start > end:
+    # Calculate the intersection’s bounds
+    start = max(a1, a2)
+    end = min(b1, b2)
+
+    # No intersection or a single-point intersection → length 0
+    if start >= end:
         return "NO"
 
-    length = end - start  # Closed intervals: length measured as end - start
-
+    length = end - start
     return "YES" if _is_prime(length) else "NO"

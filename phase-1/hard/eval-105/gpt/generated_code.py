@@ -1,12 +1,13 @@
+# entry_point: by_length
+
 def by_length(arr):
     """
-    Sort the input list, reverse it, and map digits 1–9 to their English names.
+    Given an array (list) of integers, keep only the digits 1–9 (inclusive),
+    sort that sub-array in ascending order, reverse it, and then replace each
+    digit with its corresponding English name.
 
-    Steps:
-    1. Sort the entire list in ascending order.
-    2. Reverse the sorted list (descending order).
-    3. Keep only values in the range 1–9 (inclusive).
-    4. Convert each remaining digit to its corresponding name.
+    Mapping:
+        1 → "One", 2 → "Two", …, 9 → "Nine"
 
     Examples
     --------
@@ -19,20 +20,22 @@ def by_length(arr):
     >>> by_length([1, -1, 55])
     ['One']
     """
-    digit_names = {
-        1: "One",
-        2: "Two",
-        3: "Three",
-        4: "Four",
-        5: "Five",
-        6: "Six",
-        7: "Seven",
-        8: "Eight",
-        9: "Nine",
+    # Mapping from digit to its word representation
+    digit_to_word = {
+        1: "One", 2: "Two", 3: "Three",
+        4: "Four", 5: "Five", 6: "Six",
+        7: "Seven", 8: "Eight", 9: "Nine",
     }
 
-    # Step 1 & 2: sort ascending then reverse (descending)
-    sorted_reversed = list(reversed(sorted(arr)))
+    # Keep only integers between 1 and 9 (inclusive)
+    filtered_digits = [x for x in arr if isinstance(x, int) and 1 <= x <= 9]
 
-    # Step 3 & 4: filter to 1–9 and map to names
-    return [digit_names[num] for num in sorted_reversed if 1 <= num <= 9]
+    if not filtered_digits:        # nothing to convert
+        return []
+
+    # Sort ascending, then reverse to get descending order
+    filtered_digits.sort()
+    filtered_digits.reverse()
+
+    # Convert each digit to its word
+    return [digit_to_word[d] for d in filtered_digits]
