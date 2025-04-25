@@ -1,5 +1,5 @@
 import unittest
-from code import can_arrange
+from generated_code import can_arrange
 
 class TestCanArrange(unittest.TestCase):
 

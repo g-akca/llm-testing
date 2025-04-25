@@ -1,5 +1,5 @@
 import unittest
-from code import split_words
+from generated_code import split_words
 
 class TestSplitWords(unittest.TestCase):
 

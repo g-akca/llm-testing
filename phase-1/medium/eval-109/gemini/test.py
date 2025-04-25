@@ -1,5 +1,5 @@
 import unittest
-from code import move_one_ball
+from generated_code import move_one_ball
 
 class TestMoveOneBall(unittest.TestCase):
 
