@@ -1,5 +1,5 @@
 import unittest
-from code import filter_by_prefix
+from generated_code import filter_by_prefix
 
 
 class TestFilterByPrefix(unittest.TestCase):

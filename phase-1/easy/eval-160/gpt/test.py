@@ -3,7 +3,7 @@ import unittest
 # Assuming `do_algebra` is defined in the same module; if it lives elsewhere,
 # replace the import accordingly, e.g.:
 # from my_module import do_algebra
-from __main__ import do_algebra
+from generated_code import do_algebra
 
 
 class TestDoAlgebra(unittest.TestCase):

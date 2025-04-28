@@ -1,6 +1,6 @@
 import unittest
 from typing import List
-from code import parse_music   # adjust the import path if needed
+from generated_code import parse_music   # adjust the import path if needed
 
 
 class TestParseMusic(unittest.TestCase):

@@ -2,7 +2,7 @@ import unittest
 from typing import List, Union
 
 # Import the function to test
-from code import get_positive   # adjust the import path if necessary
+from generated_code import get_positive   # adjust the import path if necessary
 
 Number = Union[int, float]
 

@@ -1,5 +1,5 @@
 import unittest
-from code import reverse_delete   # assumes the function is in reverse_delete.py
+from generated_code import reverse_delete   # assumes the function is in reverse_delete.py
 
 class TestReverseDelete(unittest.TestCase):
 
