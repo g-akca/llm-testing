@@ -1,7 +1,7 @@
 import unittest
 
 # assuming valid_date is defined in the same module or imported appropriately
-from code import valid_date
+from generated_code import valid_date
 
 
 class TestValidDate(unittest.TestCase):

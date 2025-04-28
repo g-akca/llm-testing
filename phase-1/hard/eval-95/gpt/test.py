@@ -8,7 +8,7 @@ from typing import Callable
 class TestCheckDictCase(unittest.TestCase):
     def setUp(self):
         # If check_dict_case is in another module, replace with the proper import.
-        from __main__ import check_dict_case  # noqa: E402
+        from generated_code import check_dict_case  # noqa: E402
         self.func: Callable = check_dict_case
 
     # --- Positive cases ------------------------------------------------------

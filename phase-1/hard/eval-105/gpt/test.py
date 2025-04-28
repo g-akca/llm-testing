@@ -1,7 +1,7 @@
 import unittest
 
 # The function under test is assumed to live in a file named `solution.py`
-from code import by_length
+from generated_code import by_length
 
 
 class TestByLength(unittest.TestCase):

@@ -5,7 +5,7 @@ from typing import List
 # ---- import the function to test ----
 # If the implementation is in another module, replace the import statement accordingly,
 # e.g. `from grading import numerical_letter_grade`
-from __main__ import numerical_letter_grade  
+from generated_code import numerical_letter_grade  
 
 
 class TestNumericalLetterGrade(unittest.TestCase):
