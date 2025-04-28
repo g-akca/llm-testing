@@ -1,5 +1,3 @@
-FAILED TESTS ON PHASE 1
-
 ```sh
 necipsagiroglu@Necips-MacBook-Air llm-testing % python3 phase-1/medium/eval-125/gemini/test.py        
 F....
