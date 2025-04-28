@@ -1,17 +1,24 @@
 FAILED TESTS ON PHASE 1
 
 ```sh
-necipsagiroglu@Necips-MacBook-Air llm-testing % python3 phase-1/medium/eval-125/gemini/test.py        
+necipsagiroglu@Necips-MacBook-Air llm-testing % python3 phase-1/medium/eval-6/gpt/test.py
 F....
 ======================================================================
-FAIL: test_count_odd_lowercase (__main__.TestSplitWords.test_count_odd_lowercase)
-Tests counting odd-ordered lowercase letters when no delimiters are present.
+FAIL: test_deep_nesting (__main__.TestParseNestedParens.test_deep_nesting)
+Verify correct depth for a deeply-nested group.
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "/Users/necipsagiroglu/projects/personal/llm-testing/phase-1/medium/eval-125/gemini/test.py", line 21, in test_count_odd_lowercase
-    self.assertEqual(split_words("Programming"), 4) # r(17), g(6 - even), r(17), m(12 - even), m(12 - even), n(13), g(6 - even) -> r, r, n -> 3? No, P(15), r(17), o(14), g(6), r(17), a(0), m(12), m(12), i(8), n(13), g(6) -> P, r, r, n -> 4
-    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: 3 != 4
+  File "/Users/necipsagiroglu/projects/personal/llm-testing/phase-1/medium/eval-6/gpt/test.py", line 19, in test_deep_nesting
+    self.assertEqual(parse_nested_parens('(((((())))))'), [5])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [6] != [5]
+
+First differing element 0:
+6
+5
+
+- [6]
++ [5]
 
 ----------------------------------------------------------------------
 Ran 5 tests in 0.001s
