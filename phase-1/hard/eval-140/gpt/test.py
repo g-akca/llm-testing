@@ -3,7 +3,7 @@ import unittest
 # Adjust the import path to match where `fix_spaces` is defined.
 # If your implementation is in, e.g., solution.py, use:
 #     from solution import fix_spaces
-from code import fix_spaces   # rename as needed
+from generated_code import fix_spaces   # rename as needed
 
 
 class FixSpacesTests(unittest.TestCase):

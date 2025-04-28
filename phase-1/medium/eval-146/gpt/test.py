@@ -2,7 +2,7 @@ import unittest
 
 # Import the function you want to test.
 # Adjust the import path/name as needed if your code lives in a different module.
-from code import specialFilter
+from generated_code import specialFilter
 
 
 class TestSpecialFilter(unittest.TestCase):

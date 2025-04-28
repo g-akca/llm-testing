@@ -1,5 +1,5 @@
 import unittest
-from code import correct_bracketing   # adjust import path as needed
+from generated_code import correct_bracketing   # adjust import path as needed
 
 class TestCorrectBracketing(unittest.TestCase):
 

@@ -2,23 +2,7 @@ import unittest
 
 # Import the function from the module where it’s defined.
 # If the implementation is in the same file, this import can be skipped.
-# from my_module import split_words
-
-# For demonstration purposes in this snippet, we redefine the function.
-from typing import List, Union
-
-
-def split_words(txt: str) -> Union[List[str], int]:
-    if any(ch.isspace() for ch in txt):
-        return txt.split()
-    if ',' in txt:
-        return txt.split(',')
-    return sum(
-        1
-        for ch in txt
-        if 'a' <= ch <= 'z' and ((ord(ch) - ord('a')) & 1)
-    )
-
+from generated_code import split_words
 
 class TestSplitWords(unittest.TestCase):
 

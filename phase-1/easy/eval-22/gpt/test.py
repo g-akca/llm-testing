@@ -1,5 +1,5 @@
 import unittest
-from code import filter_integers   # assumes the function is in filter_integers.py
+from generated_code import filter_integers   # assumes the function is in filter_integers.py
 
 class TestFilterIntegers(unittest.TestCase):
 

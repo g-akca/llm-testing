@@ -1,5 +1,5 @@
 import unittest
-from code import simplify   # assumes the function above is saved in simplify.py
+from generated_code import simplify   # assumes the function above is saved in simplify.py
 
 
 class TestSimplify(unittest.TestCase):

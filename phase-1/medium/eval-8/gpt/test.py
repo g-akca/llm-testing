@@ -4,7 +4,7 @@ from typing import List, Tuple
 # Assuming the function is defined in a module named `main`.
 # If your function lives elsewhere (e.g., `from my_module import sum_product`),
 # adjust the import accordingly.
-from code import sum_product
+from generated_code import sum_product
 
 
 class TestSumProduct(unittest.TestCase):

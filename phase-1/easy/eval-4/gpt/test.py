@@ -1,5 +1,5 @@
 import unittest
-from code import mean_absolute_deviation   # adjust if your filename differs
+from generated_code import mean_absolute_deviation   # adjust if your filename differs
 
 
 class MeanAbsoluteDeviationTests(unittest.TestCase):

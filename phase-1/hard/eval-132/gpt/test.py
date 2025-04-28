@@ -1,5 +1,5 @@
 import unittest
-from code import is_nested
+from generated_code import is_nested
 
 class TestIsNested(unittest.TestCase):
 

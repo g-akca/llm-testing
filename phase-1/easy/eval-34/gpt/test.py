@@ -1,5 +1,5 @@
 import unittest
-from code import unique   # assumes the function is saved in `unique.py`
+from generated_code import unique   # assumes the function is saved in `unique.py`
 
 
 class TestUnique(unittest.TestCase):

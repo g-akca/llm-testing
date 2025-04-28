@@ -1,7 +1,7 @@
 import unittest
 
 # Assume `is_bored` is available in the same module / imported accordingly.
-from code import is_bored  # replace with actual import path if needed
+from generated_code import is_bored  # replace with actual import path if needed
 
 
 class TestIsBored(unittest.TestCase):

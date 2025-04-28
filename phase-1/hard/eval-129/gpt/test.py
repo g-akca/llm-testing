@@ -1,6 +1,6 @@
 import unittest
 
-from code import minPath   # replace with the actual module name
+from generated_code import minPath   # replace with the actual module name
 
 
 class TestMinPath(unittest.TestCase):

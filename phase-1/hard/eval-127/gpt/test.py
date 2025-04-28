@@ -3,7 +3,7 @@ import unittest
 # Assume the `intersection` function is defined in the same module.
 # If it lives in a different file (e.g. my_module.py), replace the next line with:
 
-from code import intersection
+from generated_code import intersection
 
 class TestIntersection(unittest.TestCase):
 

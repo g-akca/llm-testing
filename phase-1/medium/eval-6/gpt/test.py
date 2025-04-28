@@ -1,6 +1,6 @@
 import unittest
 from typing import List
-from code import parse_nested_parens   # replace with the actual module name
+from generated_code import parse_nested_parens   # replace with the actual module name
 
 class TestParseNestedParens(unittest.TestCase):
 

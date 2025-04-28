@@ -2,7 +2,7 @@ import unittest
 
 # Adjust the import below to match where `move_one_ball` lives.
 # If the function is in `move_one_ball.py`, leave as-is; otherwise change accordingly.
-from code import move_one_ball  
+from generated_code import move_one_ball  
 
 
 class MoveOneBallTests(unittest.TestCase):

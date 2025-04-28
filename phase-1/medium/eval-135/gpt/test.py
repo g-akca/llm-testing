@@ -1,51 +1,23 @@
 import unittest
+from generated_code import can_arrange
 
-# Import the function from the module where it’s defined.
-# If the implementation is in the same file, this import can be skipped.
-# from my_module import split_words
+class TestCanArrange(unittest.TestCase):
 
-# For demonstration purposes in this snippet, we redefine the function.
-from typing import List, Union
+    def test_strictly_increasing(self):
+        """Array is already in increasing order → should return -1."""
+        self.assertEqual(can_arrange([1, 2, 3, 4, 5]), -1)
 
+    def test_single_violation_middle(self):
+        """Single drop in the middle of the array."""
+        self.assertEqual(can_arrange([1, 2, 4, 3, 5]), 3)
 
-def split_words(txt: str) -> Union[List[str], int]:
-    if any(ch.isspace() for ch in txt):
-        return txt.split()
-    if ',' in txt:
-        return txt.split(',')
-    return sum(
-        1
-        for ch in txt
-        if 'a' <= ch <= 'z' and ((ord(ch) - ord('a')) & 1)
-    )
+    def test_violation_at_end(self):
+        """Drop occurs at the last position."""
+        self.assertEqual(can_arrange([10, 20, 30, 25]), 3)
 
-
-class TestSplitWords(unittest.TestCase):
-
-    def test_whitespace_split(self):
-        self.assertEqual(
-            split_words("Hello world!"),
-            ["Hello", "world!"]
-        )
-
-    def test_comma_split(self):
-        self.assertEqual(
-            split_words("hi,there,friend"),
-            ["hi", "there", "friend"]
-        )
-
-    def test_whitespace_priority_over_comma(self):
-        # Contains both whitespace and commas: whitespace should take precedence
-        self.assertEqual(
-            split_words("Hello, world,again"),
-            ["Hello,", "world,again"]
-        )
-
-    def test_odd_lowercase_count(self):
-        # "abcdef" → odd-indexed lower-case letters: b (1), d (3), f (5)
-        self.assertEqual(split_words("abcdef"), 3)
-        # Mixed case: only lower-case 'z' (25) is odd-indexed
-        self.assertEqual(split_words("aCz"), 1)
+    def test_violation_near_start(self):
+        """Drop occurs right after the first element."""
+        self.assertEqual(can_arrange([3, 1, 2, 4]), 1)
 
 
 if __name__ == "__main__":

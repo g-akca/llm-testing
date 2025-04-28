@@ -1,6 +1,6 @@
 # test_vowels_count.py
 import unittest
-from code import vowels_count
+from generated_code import vowels_count
 
 class TestVowelsCount(unittest.TestCase):
     def test_example_given(self):

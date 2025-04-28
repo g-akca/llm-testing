@@ -1,7 +1,7 @@
 import unittest
 
 # Assuming the implementation is saved in `sort_numbers.py`
-from code import sort_numbers
+from generated_code import sort_numbers
 
 
 class TestSortNumbers(unittest.TestCase):

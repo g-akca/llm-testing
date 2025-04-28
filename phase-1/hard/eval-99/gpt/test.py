@@ -1,5 +1,5 @@
 import unittest
-from code import closest_integer
+from generated_code import closest_integer
 
 
 class TestClosestInteger(unittest.TestCase):
