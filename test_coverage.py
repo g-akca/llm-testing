@@ -1,3 +1,7 @@
+# @Authors
+# Student Names: Barış Türker, Gökçe Akca, Necip Baha Sağıroğlu  
+# Student IDs: 150170113, 150210046, 150220727
+
 #!/usr/bin/env python3
 import os
 import sys
@@ -50,7 +54,7 @@ def main():
 
     test_dirs = find_test_dirs(root)
     if not test_dirs:
-        print("Hiç test.py + generated_code.py çifti bulunamadı!", file=sys.stderr)
+        print("Couldn't find any test.py + generated_code.py pairs!", file=sys.stderr)
         sys.exit(1)
 
     total_suite = unittest.TestSuite()
@@ -60,7 +64,7 @@ def main():
 
     result = unittest.TextTestRunner(verbosity=2).run(total_suite)
     if not result.wasSuccessful():
-        print("Bazı testler başarısız oldu!", file=sys.stderr)
+        print("Some tests were unsuccessful!", file=sys.stderr)
 
     cov.stop()
     cov.save()
@@ -83,7 +87,7 @@ def main():
             missing_str = ",".join(str(x) for x in missing_list)
             cf.write(f"{fn},{stmts},{miss},{cover},\"{missing_str}\"\n")
 
-    print(f"\nLine coverage raporu oluşturuldu: {csv_path}")
+    print(f"\nLine coverage report has been created: {csv_path}")
 
 if __name__ == "__main__":
     main()
