@@ -1,5 +1,7 @@
 from typing import List
 
+# adding this prompt the the original prompt, the model generated the correct code:
+# An empty dataset has zero deviation.
 
 def mean_absolute_deviation(numbers: List[float]) -> float:
     """
