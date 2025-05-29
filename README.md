@@ -31,9 +31,9 @@ cd llm-testing
   - `easy/` – Same as phase-1 folder + regenerated codes and human-written tests
   - `hard/` – Same as phase-1 folder + regenerated codes and human-written tests
   - `medium/` – Same as phase-1 folder + regenerated codes and human-written tests
-  - `integration/` – Combined prompt implementations and tests
+  - `integrationTest/` – Combined prompt implementations and tests
 
-- `coverage.py` – Script for analyzing LLM-generated tests' coverage
+- `test_coverage.py` – Script for analyzing LLM-generated tests' coverage
 - `coverage.csv` – Test coverage report in CSV format
 - `coverage.json` – Test coverage report in JSON format
 - `humaneval.json` – HumanEval dataset
