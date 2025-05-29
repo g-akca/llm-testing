@@ -1,5 +1,8 @@
 from decimal import Decimal
 
+# adding this prompt the the original prompt, the model generated the correct code:
+# Note: use Python's built-in round() for all cases except exactly 0.5.
+
 def closest_integer(value):
     """
     Create a function that takes a value (string) representing a number
