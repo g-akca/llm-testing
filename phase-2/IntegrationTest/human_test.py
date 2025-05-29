@@ -1,3 +1,6 @@
+# @Authors
+# Student Names: Barış Türker, Gökçe Akca, Necip Baha Sağıroğlu
+# Student IDs: 150170113, 150210046, 150220727
 
 from __future__ import annotations
 
